@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "maze.py", line 316, in <module>
+    while MazeGame(Maze.generate(width, height)).play(): pass
+  File "maze.py", line 284, in play
+    key = console.get_valid_key(['up', 'down', 'left', 'right', 'q'])
+  File "/Users/yashbonde/Desktop/AI/fun/mazerz/console.py", line 105, in get_valid_key
+    key = get_key()
+  File "/Users/yashbonde/Desktop/AI/fun/mazerz/console.py", line 92, in get_key
+    key = _get_key()
+  File "/Users/yashbonde/Desktop/AI/fun/mazerz/console.py", line 42, in _get_key
+    keycode = window.getch()
+KeyboardInterrupt
