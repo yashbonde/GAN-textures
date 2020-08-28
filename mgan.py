@@ -253,8 +253,8 @@ with tb.SummaryWriter(log_dir = opt.model_folder, flush_secs = 20) as sw:
 
                 if batches_done % opt.save_every == 0:
                     print(f"Saving model in folder: {opt.model_folder}")
-                    torch.save(generator, f"{opt.model_folder}/generator.pt")
-                    torch.save(discriminator, f"{opt.model_folder}/discriminator.pt")
+                    torch.save(generator.state_dict(), f"{opt.model_folder}/generator.pt")
+                    torch.save(discriminator.state_dict(), f"{opt.model_folder}/discriminator.pt")
 
                 sw.add_scalar("Dis-Loss/Real", real_loss.item(), global_step = global_step, walltime = time.time())
                 sw.add_scalar("Dis-Loss/Fake", fake_loss.item(), global_step = global_step, walltime = time.time())
@@ -269,6 +269,8 @@ with tb.SummaryWriter(log_dir = opt.model_folder, flush_secs = 20) as sw:
 
                 global_step += 1
     except KeyboardInterrupt:
-        print(f"Saving model in folder: {opt.model_folder}")
-        torch.save(generator, f"{opt.model_folder}/generator.pt")
-        torch.save(discriminator, f"{opt.model_folder}/discriminator.pt")
+        pass
+
+print(f"Saving model in folder: {opt.model_folder}")
+torch.save(generator.state_dict(), f"{opt.model_folder}/generator.pt")
+torch.save(discriminator.state_dict(), f"{opt.model_folder}/discriminator.pt")
